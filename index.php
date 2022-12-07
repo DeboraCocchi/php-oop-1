@@ -3,17 +3,8 @@ if (is_file('../debugger.php')) {
   include '../debugger.php';
 }
 
-include_once './Models/Movie.php';
+require_once 'db.php';
 
-$movie1 = new Movie("Shining", "S. Kubrik", 1980, "Horror");
-$movie1->setPoster("https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/171/230/171-230-101P/The-Shining-Retro-Movie-Poster-Vintage-Photography-Archive-Poster.jpg");
-
-$movie2=new Movie("The Mask", "C. Russell", 1994, "Comedy");
-$movie2->setPoster("https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Mask_%28film%29_poster.jpg/220px-The_Mask_%28film%29_poster.jpg");
-
-$movie3=new Movie("Léon", "L. Besson", 1994, "Action");
-
-$moviesList=[$movie1, $movie2, $movie3];
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +43,12 @@ $moviesList=[$movie1, $movie2, $movie3];
           <div class="card-body text-center">
             <h4 class="card-title"><?php echo $movie->title ?></h4>
             <h6><?php echo $movie->director ?></h6>
-            <p class="card-text"><?php echo $movie->year ?> || Genre: <?php echo $movie->genre ?></p>
+            <p class="card-text"><?php echo $movie->year ?> || Genre: <?php echo $movie->genres?->genre1 ?>
+            <?php if($movie->genres?->genre2): ?>, 
+              <?php echo $movie->genres?->genre2 .', ' ?? '' ?>
+              <?php echo $movie->genres?->genre3 ?? '' ?>
+            <?php endif; ?>
+          </p>
             
           </div>
         </div>
