@@ -25,7 +25,7 @@ require_once 'db.php';
     }
     img{
       width:100%;
-      height:100%;
+      height:70%;
       object-fit: cover;
       object-position:center;
     }
@@ -38,8 +38,8 @@ require_once 'db.php';
       <div class="row">
 
       <?php foreach($moviesList as $movie) : ?>
-        <div class="card mx-2" style="width: 18rem;">
-          <img src="<?php echo $movie->getPoster() ?>" class="card-img-top" alt="<?php echo $movie->title ?>">
+        <div class="card mx-2 p-0" style="width: 18rem;">
+          <img src="<?php echo $movie->getPoster() ?>" class="card-img-top p-0" alt="<?php echo $movie->title ?>">
           <div class="card-body text-center">
             <h4 class="card-title"><?php echo $movie->title ?></h4>
             <h6><?php echo $movie->director ?></h6>
